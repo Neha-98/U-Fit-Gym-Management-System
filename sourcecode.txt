@@ -1,0 +1,423 @@
+use ist659nmshirod;
+GO
+
+IF SERVERPROPERTY('ProductVersion') > '12'
+   ALTER DATABASE [ist659nmshirod] SET QUERY_STORE = ON;
+GO
+
+IF OBJECT_ID('dbo.Members', 'U') IS NOT NULL
+   DROP TABLE dbo.Members;
+
+IF OBJECT_ID('dbo.Trainers', 'U') IS NOT NULL
+   DROP TABLE dbo.Trainers;
+
+create table Members (
+    MemberID VARCHAR(10) PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(50),
+    contact VARCHAR(50),
+    birthdate DATE,
+    age INT,
+    gender VARCHAR(50),
+    BMI INT,
+    membership_start_date DATE,
+    membership_end_date DATE,
+    membership_type VARCHAR(50)
+);
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M1', 'Alex', 'Gawkroge', 'agawkroge0@ustream.tv', '223-121-5250', '6/11/1987', 57, 'M', 2, '7/31/2023', '2/25/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M2', 'Ermin', 'Dunstall', 'edunstall1@opensource.org', '966-791-6717', '9/27/1980', 60, 'M', 53, '12/26/2022', '3/12/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M3', 'Dino', 'Iacobacci', 'diacobacci2@mail.ru', '249-151-6146', '10/23/2008', 50, 'M', 39, '5/20/2023', '4/25/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M4', 'Gabi', 'Saunders', 'gsaunders3@webeden.co.uk', '658-482-3863', '8/27/1966', 23, 'F', 27, '5/24/2023', '3/12/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M5', 'Jarvis', 'Flanders', 'jflanders4@ucla.edu', '228-151-8301', '11/5/1973', 77, 'M', 14, '5/17/2023', '11/13/2023', 'Bi-annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M6', 'Dorie', 'Kolakowski', 'dkolakowski5@tmall.com', '735-844-0260', '11/29/1993', 69, 'M', 59, '3/8/2023', '6/7/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M7', 'Ibbie', 'Sugar', 'isugar6@moonfruit.com', '886-226-9315', '4/2/1975', 10, 'F', 10, '1/19/2023', '8/28/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M8', 'Wat', 'Wortman', 'wwortman7@studiopress.com', '372-616-1858', '4/26/1978', 4, 'M', 1, '6/29/2023', '5/23/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M9', 'Danice', 'Forten', 'dforten8@amazonaws.com', '958-326-7848', '12/24/1995', 32, 'F', 60, '4/7/2023', '8/31/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M10', 'Pietra', 'Cawtheray', 'pcawtheray9@de.vu', '691-917-4956', '5/4/1991', 98, 'F', 15, '1/5/2023', '4/17/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M11', 'Killian', 'Simoes', 'ksimoesa@geocities.jp', '980-991-6797', '10/24/1993', 49, 'M', 38, '8/25/2023', '7/19/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M12', 'Noelle', 'Helversen', 'nhelversenb@cpanel.net', '886-908-2572', '9/26/1976', 64, 'F', 16, '7/12/2023', '1/14/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M13', 'Silvano', 'Oblein', 'sobleinc@tripadvisor.com', '480-982-4727', '3/18/1967', 47, 'M', 57, '11/13/2023', '1/10/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M14', 'Eddy', 'Charlo', 'echarlod@linkedin.com', '278-190-5384', '3/26/1992', 21, 'F', 40, '4/11/2023', '5/31/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M15', 'Levi', 'Elgood', 'lelgoode@pbs.org', '999-144-2602', '11/7/1974', 65, 'M', 44, '5/14/2023', '9/5/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M16', 'Sutherland', 'Cherrison', 'scherrisonf@hp.com', '856-174-4500', '7/27/2009', 64, 'M', 55, '10/1/2023', '4/12/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M17', 'Petr', 'Puvia', 'ppuviag@berkeley.edu', '990-849-3499', '8/11/2000', 64, 'M', 13, '4/14/2023', '4/25/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M18', 'Mariejeanne', 'Book', 'mbookh@ted.com', '279-702-6947', '5/22/1970', 36, 'F', 57, '12/3/2022', '8/13/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M19', 'Norrie', 'St. Leger', 'nstlegeri@nih.gov', '739-773-7115', '1/13/1988', 9, 'M', 2, '12/24/2022', '9/10/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M20', 'Bessie', 'Glaum', 'bglaumj@wp.com', '778-108-9503', '12/18/2005', 10, 'F', 33, '10/31/2023', '6/16/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M21', 'Oswald', 'Vido', 'ovidok@admin.ch', '817-660-4840', '1/27/2010', 35, 'M', 3, '4/19/2023', '10/24/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M22', 'Rebbecca', 'Quarlis', 'rquarlisl@list-manage.com', '983-389-4264', '11/5/1968', 94, 'F', 46, '3/16/2023', '7/31/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M23', 'Korie', 'Cudihy', 'kcudihym@washingtonpost.com', '410-786-2806', '1/3/2008', 24, 'F', 5, '3/23/2023', '8/11/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M24', 'Genni', 'Cunradi', 'gcunradin@slate.com', '264-729-9403', '5/6/1997', 54, 'F', 23, '1/3/2023', '11/8/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M25', 'Kipper', 'Poundsford', 'kpoundsfordo@wired.com', '792-178-9977', '6/5/2003', 42, 'M', 57, '3/27/2023', '2/6/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M26', 'Sapphira', 'Pelosi', 'spelosip@bigcartel.com', '999-485-1071', '11/13/1968', 54, 'F', 19, '7/2/2023', '9/26/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M27', 'Horatio', 'Marlen', 'hmarlenq@ft.com', '464-739-4849', '10/10/1995', 6, 'M', 4, '8/19/2023', '6/6/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M28', 'Chevalier', 'Richt', 'crichtr@livejournal.com', '812-220-6168', '4/27/2005', 98, 'M', 9, '5/27/2023', '9/20/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M29', 'Lorelle', 'Zorzi', 'lzorzis@patch.com', '574-707-3920', '7/8/1994', 40, 'F', 25, '2/18/2023', '10/20/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M30', 'Mario', 'Danielkiewicz', 'mdanielkiewiczt@census.gov', '253-314-1815', '3/26/1965', 33, 'M', 7, '1/27/2023', '9/17/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M31', 'Libby', 'Outright', 'loutrightu@wordpress.org', '129-348-5364', '11/12/1975', 91, 'F', 56, '3/10/2023', '12/30/2022', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M32', 'Pepillo', 'Barkley', 'pbarkleyv@over-blog.com', '505-801-4040', '7/10/2005', 4, 'M', 20, '12/9/2022', '9/13/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M33', 'Olive', 'Standing', 'ostandingw@sourceforge.net', '307-826-7815', '6/18/1964', 85, 'F', 25, '9/30/2023', '1/25/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M34', 'Esteban', 'Kellard', 'ekellardx@myspace.com', '556-802-6916', '9/16/1973', 55, 'M', 40, '12/4/2022', '4/3/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M35', 'Shannon', 'Haycox', 'shaycoxy@webeden.co.uk', '387-400-4730', '10/21/1962', 67, 'F', 37, '8/2/2023', '4/24/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M36', 'Kitty', 'Wenderoth', 'kwenderothz@wsj.com', '820-129-3968', '4/24/1962', 21, 'F', 53, '6/16/2023', '2/2/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M37', 'Basilio', 'Kedwell', 'bkedwell10@opensource.org', '338-597-3641', '4/9/1975', 41, 'M', 29, '12/6/2022', '7/6/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M38', 'Fredek', 'Woollett', 'fwoollett11@walmart.com', '168-503-5829', '11/14/1988', 96, 'M', 18, '5/21/2023', '6/29/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M39', 'Sargent', 'Barringer', 'sbarringer12@weibo.com', '665-876-1650', '7/22/1961', 15, 'M', 13, '10/13/2023', '11/10/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M40', 'Gib', 'Smellie', 'gsmellie13@skyrock.com', '189-810-9380', '8/6/1996', 53, 'M', 15, '1/12/2023', '11/16/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M41', 'Swen', 'Klempke', 'sklempke14@hao123.com', '467-831-4669', '10/10/2002', 84, 'M', 22, '4/25/2023', '1/3/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M42', 'Candis', 'Hedley', 'chedley15@cyberchimps.com', '360-378-7110', '9/13/1992', 100, 'F', 4, '9/19/2023', '6/15/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M43', 'Piper', 'Jezzard', 'pjezzard16@pbs.org', '244-657-1585', '7/16/1974', 16, 'F', 51, '6/28/2023', '3/26/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M44', 'Inglis', 'Twentyman', 'itwentyman17@gnu.org', '657-245-8941', '11/30/1982', 20, 'M', 22, '3/12/2023', '1/27/2023', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M45', 'Kimmi', 'Baudacci', 'kbaudacci18@unblog.fr', '946-312-6473', '10/21/1960', 56, 'F', 13, '10/2/2023', '1/23/2023', 'Monthly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M46', 'Electra', 'Rodmell', 'erodmell19@chronoengine.com', '415-174-3339', '11/24/1969', 62, 'F', 12, '5/28/2023', '9/23/2023', 'Premium');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M47', 'Isidro', 'Clinnick', 'iclinnick1a@wsj.com', '370-283-3988', '4/24/1993', 91, 'M', 30, '8/13/2023', '1/29/2023', 'Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M48', 'Dwight', 'Kovacs', 'dkovacs1b@tuttocitta.it', '928-964-9130', '12/3/1998', 85, 'M', 42, '10/4/2023', '1/13/2023', 'Bi-Annually');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M49', 'Shepard', 'Rayne', 'srayne1c@jimdo.com', '866-383-9133', '6/23/1968', 78, 'M', 39, '5/16/2023', '12/16/2022', 'Quarterly');
+insert into Members (MemberID, first_name, last_name, email, contact, birthdate, age, gender, BMI, membership_start_date, membership_end_date, membership_type) values ('M50', 'Samaria', 'Soughton', 'ssoughton1d@discuz.net', '751-815-6716', '11/11/1982', 50, 'F', 38, '4/25/2023', '2/28/2023', 'Monthly');
+
+SELECT * FROM Members
+CREATE TABLE Trainers (
+    TrainerID VARCHAR(10) PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(50),
+    ContactNumber VARCHAR(15),
+    DateOfBirth DATE,
+    Age INT,
+    Gender VARCHAR(10),
+    HireDate DATE,
+    Specialization VARCHAR(50)
+);
+
+INSERT INTO Trainers (TrainerID, FirstName, LastName, Email, ContactNumber, DateOfBirth, Age, Gender, HireDate, Specialization)
+VALUES
+('T1', 'John', 'Doe', 'johndoe@email.com', '123456789', '1985-03-15', 36, 'Male', '2021-05-10', 'Yoga'),
+('T2', 'Emma', 'Smith', 'emmas@email.com', '987654321', '1990-08-20', 31, 'Female', '2020-11-28', 'CrossFit'),
+('T3', 'Michael', 'Johnson', 'michaelj@email.com', '456789123', '1980-11-03', 41, 'Male', '2019-06-14', 'Weight Training'),
+('T4', 'Sophia', 'Brown', 'sophiab@email.com', '741852963', '1995-02-18', 26, 'Female', '2022-03-22', 'Cardio'),
+('T5', 'Daniel', 'Garcia', 'dan@email.com', '369258147', '1988-09-28', 33, 'Male', '2020-08-07', 'Pilates'),
+('T6', 'Olivia', 'Martinez', 'olivia@email.com', '159357852', '1992-04-10', 29, 'Female', '2021-12-05', 'Kickboxing'),
+('T7', 'William', 'Lopez', 'will@email.com', '852369741', '1983-06-25', 38, 'Male', '2018-09-19', 'Zumba'),
+('T8', 'Ava', 'Hernandez', 'ava@email.com', '456123789', '1993-12-30', 28, 'Female', '2023-02-14', 'Functional Training'),
+('T9', 'James', 'Gonzalez', 'jamesg@email.com', '963258741', '1987-07-12', 34, 'Male', '2017-11-30', 'Circuit Training'),
+('T10', 'Mia', 'Perez', 'mia@email.com', '654789321', '1996-01-05', 25, 'Female', '2022-06-18', 'Aerobics'),
+('T11', 'Alexander', 'Rodriguez', 'alex@email.com', '258963147', '1984-10-08', 37, 'Male', '2020-04-02', 'Martial Arts'),
+('T12', 'Charlotte', 'Sanchez', 'charlotte@email.com', '789456123', '1994-11-20', 27, 'Female', '2019-08-25', 'Spinning'),
+('T13', 'Ethan', 'Torres', 'ethan@email.com', '147852369', '1989-05-03', 32, 'Male', '2021-09-10', 'Barre'),
+('T14', 'Harper', 'Ramirez', 'harper@email.com', '321654987', '1991-08-12', 30, 'Female', '2018-12-15', 'Boxing'),
+('T15', 'Logan', 'Flores', 'logan@email.com', '852147963', '1997-03-28', 24, 'Male', '2023-01-08', 'Dance');
+
+--Create Sessions Table
+CREATE TABLE Sessions (
+    SessionID INT PRIMARY KEY,
+    MemberID VARCHAR(10),
+    TrainerID VARCHAR(10),
+    SessionName VARCHAR(50),
+    Schedule VARCHAR(50),
+    MaxCapacity INT,
+    CurrentEnrollment INT
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID),
+    FOREIGN KEY (TrainerID) REFERENCES Trainers(TrainerID),
+
+);
+
+INSERT INTO Sessions (SessionID, SessionName, Schedule, MaxCapacity, CurrentEnrollment, MemberID, TrainerID)
+VALUES
+(1, 'Yoga Class', 'Monday 10:00 AM', 20, 15, 'M10', 'T12'),
+(2, 'CrossFit Workout', 'Wednesday 5:00 PM', 25, 20, 'M12', 'T7'),
+(3, 'Weight Training', 'Friday 8:00 AM', 30, 25, 'M18', 'T6'),
+(4, 'Pilates Session', 'Tuesday 6:30 PM', 15, 12, 'M44', 'T8'),
+(5, 'Cardio Blast', 'Thursday 7:00 AM', 20, 18, 'M27', 'T9'),
+(6, 'Kickboxing Fitness', 'Saturday 11:00 AM', 25, 22, 'M38', 'T11'),
+(7, 'Zumba Dance', 'Sunday 4:00 PM', 30, 27, 'M33', 'T5'),
+(8, 'Functional Training', 'Wednesday 6:00 AM', 18, 16, 'M43', 'T9'),
+(9, 'Circuit Training', 'Monday 6:30 PM', 22, 19, 'M37', 'T1'),
+(10, 'Aerobics Workout', 'Friday 5:30 PM', 25, 23, 'M39', 'T2');
+
+IF OBJECT_ID('dbo.Equipment', 'U') IS NOT NULL
+   DROP TABLE dbo.Equipment;
+
+CREATE TABLE Equipments (
+    EquipmentID INT PRIMARY KEY, 
+    EquipmentName VARCHAR(50),
+    Quantity INT,
+    Condition VARCHAR(50),
+    LastMaintenanceDate DATE
+
+);
+
+INSERT INTO Equipments (EquipmentID, EquipmentName, Quantity, Condition, LastMaintenanceDate)
+VALUES
+(1, 'Treadmill', 5, 'Good', '2022-12-05'),
+(2, 'Elliptical Machine', 8, 'Excellent', '2022-11-18'),
+(3, 'Stationary Bike', 10, 'Fair', '2022-10-25'),
+(4, 'Dumbbells (5 lbs)', 20, 'Good', '2022-12-10'),
+(5, 'Dumbbells (10 lbs)', 15, 'Fair', '2022-11-30'),
+(6, 'Barbell Set', 6, 'Excellent', '2022-11-28'),
+(7, 'Kettlebells', 12, 'Good', '2022-12-02'),
+(8, 'Resistance Bands', 25, 'Excellent', '2022-10-20'),
+(9, 'Yoga Mats', 30, 'Good', '2022-12-08'),
+(10, 'Jump Ropes', 18, 'Fair', '2022-11-25'),
+(11, 'Medicine Balls', 10, 'Excellent', '2022-11-22'),
+(12, 'Rowing Machine', 5, 'Good', '2022-12-03'),
+(13, 'Bench Press', 4, 'Fair', '2022-11-27'),
+(14, 'Leg Press Machine', 3, 'Excellent', '2022-11-15'),
+(15, 'Pull-Up Bar', 7, 'Good', '2022-12-06'),
+(16, 'Cable Machine', 5, 'Fair', '2022-11-29'),
+(17, 'Smith Machine', 2, 'Good', '2022-12-04'),
+(18, 'Punching Bag', 4, 'Excellent', '2022-11-20'),
+(19, 'Battle Ropes', 6, 'Good', '2022-12-07'),
+(20, 'Step Platforms', 10, 'Fair', '2022-11-24');
+
+-- Create Enrollments Table
+CREATE TABLE Enrollments (
+    EnrollmentID VARCHAR(10) PRIMARY KEY,
+    MemberID VARCHAR(10),
+    EnrollmentDate DATE,
+    FOREIGN KEY (EnrollmentID) REFERENCES Members(MemberID),
+
+);
+
+INSERT INTO Enrollments (EnrollmentID, MemberID, EnrollmentDate)
+VALUES
+('E1', 'M1', '2022-01-10'),
+('E2', 'M2', '2022-02-15'),
+('E3', 'M3', '2022-03-20'),
+('E4', 'M4', '2022-04-05'),
+('E5', 'M5', '2022-05-12'),
+('E6', 'M6', '2022-06-18'),
+('E7', 'M7', '2022-07-25'),
+('E8', 'M8', '2022-08-30'),
+('E9', 'M9', '2022-09-05'),
+('E10', 'M10', '2022-10-10'),
+('E11', 'M11', '2022-11-15'),
+('E12', 'M12', '2022-12-20'),
+('E13', 'M13', '2023-01-25'),
+('E14', 'M14', '2023-02-28'),
+('E15', 'M15', '2023-03-05'),
+('E16', 'M16', '2023-04-10'),
+('E17', 'M17', '2023-05-15'),
+('E18', 'M18', '2023-06-20'),
+('E19', 'M19', '2023-07-25'),
+('E20', 'M20', '2023-08-30'),
+('E21', 'M21', '2023-09-05'),
+('E22', 'M22', '2023-10-10'),
+('E23', 'M23', '2023-11-15'),
+('E24', 'M24', '2023-12-20'),
+('E25', 'M25', '2024-01-25'),
+('E26', 'M26', '2024-02-28'),
+('E27', 'M27', '2024-03-05'),
+('E28', 'M28', '2024-04-10'),
+('E29', 'M29', '2024-05-15'),
+('E30', 'M30', '2024-06-20'),
+('E31', 'M31', '2024-07-25'),
+('E32', 'M32', '2024-08-30'),
+('E33', 'M33', '2024-09-05'),
+('E34', 'M34', '2024-10-10'),
+('E35', 'M35', '2024-11-15'),
+('E36', 'M36', '2024-12-20'),
+('E37', 'M37', '2025-01-25'),
+('E38', 'M38', '2025-02-28'),
+('E39', 'M39', '2025-03-05'),
+('E40', 'M40', '2025-04-10'),
+('E41', 'M41', '2025-05-15'),
+('E42', 'M42', '2025-06-20'),
+('E43', 'M43', '2025-07-25'),
+('E44', 'M44', '2025-08-30'),
+('E45', 'M45', '2025-09-05'),
+('E46', 'M46', '2025-10-10'),
+('E47', 'M47', '2025-11-15'),
+('E48', 'M48', '2025-12-20'),
+('E49', 'M49', '2026-01-25'),
+('E50', 'M50', '2026-02-28');
+
+CREATE TABLE Diets (
+    DietID VARCHAR(10) PRIMARY KEY,
+    MemberID VARCHAR(10),
+    DietType VARCHAR(50),
+    Start_Date DATE,
+    End_Date DATE,
+    CalorieIntake DECIMAL(10, 2),
+    ProteinIntake DECIMAL(10, 2),
+    CarbIntake DECIMAL(10, 2),
+    FatIntake DECIMAL(10, 2),
+    FiberIntake DECIMAL(10, 2),
+    WaterIntake VARCHAR(50)
+);
+
+INSERT INTO Diets (DietID, MemberID, DietType, Start_Date, End_Date, CalorieIntake, ProteinIntake, CarbIntake, FatIntake, FiberIntake, WaterIntake)
+VALUES
+('D1', 'M11', 'Keto', '2022-01-10', '2022-02-10', 1800, 120, 30, 150, 25, '8 glasses'),
+('D2', 'M22', 'Paleo', '2022-02-15', '2022-03-15', 2000, 100, 50, 100, 30, '10 glasses'),
+('D3', 'M33', 'Vegan', '2022-03-20', '2022-04-20', 1700, 80, 60, 80, 35, '9 glasses'),
+('D4', 'M44', 'Low-Carb', '2022-04-05', '2022-05-05', 1600, 110, 40, 120, 20, '7 glasses'),
+('D5', 'M45', 'Keto', '2022-05-12', '2022-06-12', 1900, 130, 35, 140, 27, '8 glasses'),
+('D6', 'M36', 'Vegan', '2022-06-18', '2022-07-18', 1750, 85, 55, 90, 40, '9 glasses'),
+('D7', 'M27', 'Low-Carb', '2022-07-25', '2022-08-25', 1650, 120, 45, 110, 22, '7 glasses'),
+('D8', 'M18', 'Keto', '2022-08-30', '2022-09-30', 1850, 125, 33, 130, 28, '8 glasses'),
+('D9', 'M9', 'Paleo', '2022-09-05', '2022-10-05', 1950, 95, 48, 105, 32, '10 glasses'),
+('D10', 'M10', 'Vegan', '2022-10-10', '2022-11-10', 1800, 75, 65, 85, 37, '9 glasses'),
+('D11', 'M21', 'Low-Carb', '2022-11-15', '2022-12-15', 1700, 130, 42, 115, 23, '7 glasses'),
+('D12', 'M32', 'Keto', '2022-12-20', '2023-01-20', 1900, 135, 30, 135, 30, '8 glasses'),
+('D13', 'M43', 'Paleo', '2023-01-25', '2023-02-25', 2000, 100, 50, 100, 30, '10 glasses'),
+('D14', 'M24', 'Vegan', '2023-02-28', '2023-03-28', 1700, 80, 60, 80, 35, '9 glasses'),
+('D15', 'M15', 'Low-Carb', '2023-03-05', '2023-04-05', 1600, 110, 40, 120, 20, '7 glasses'),
+('D16', 'M26', 'Keto', '2023-04-10', '2023-05-10', 1900, 130, 35, 140, 27, '8 glasses'),
+('D17', 'M37', 'Vegan', '2023-05-15', '2023-06-15', 1750, 85, 55, 90, 40, '9 glasses'),
+('D18', 'M48', 'Low-Carb', '2023-06-20', '2023-07-20', 1650, 120, 45, 110, 22, '7 glasses'),
+('D19', 'M19', 'Keto', '2023-07-25', '2023-08-25', 1850, 125, 33, 130, 28, '8 glasses'),
+('D20', 'M20', 'Paleo', '2023-08-30', '2023-09-30', 1950, 95, 48, 105, 32, '10 glasses');
+
+-- Create MemberPayments Table
+CREATE TABLE MemberPayments (
+    PaymentID VARCHAR(10) PRIMARY KEY,
+    MemberID VARCHAR(10),
+    PaymentDate DATE,
+    Amount DECIMAL(10, 2),
+    PaymentMethod VARCHAR(20),
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
+);
+
+INSERT INTO MemberPayments (PaymentID, MemberID, PaymentDate, Amount, PaymentMethod)
+VALUES
+('P1', 'M1', '2022-01-10', 50.00, 'Credit Card'),
+('P2', 'M2', '2022-02-15', 75.00, 'Cash'),
+('P3', 'M3', '2022-03-20', 60.00, 'Debit Card'),
+('P4', 'M4', '2022-04-05', 100.00, 'Online Payment'),
+('P5', 'M5', '2022-05-12', 55.00, 'Cash'),
+('P6', 'M6', '2022-06-18', 70.00, 'Credit Card'),
+('P7', 'M7', '2022-07-25', 80.00, 'Debit Card'),
+('P8', 'M8', '2022-08-30', 90.00, 'Online Payment'),
+('P9', 'M9', '2022-09-05', 65.00, 'Cash'),
+('P10', 'M10', '2022-10-10', 85.00, 'Credit Card'),
+('P11', 'M11', '2022-11-15', 95.00, 'Debit Card'),
+('P12', 'M12', '2022-12-20', 70.00, 'Online Payment'),
+('P13', 'M13', '2023-01-25', 75.00, 'Cash'),
+('P14', 'M14', '2023-02-28', 80.00, 'Credit Card'),
+('P15', 'M15', '2023-03-05', 60.00, 'Debit Card'),
+('P16', 'M16', '2023-04-10', 100.00, 'Online Payment'),
+('P17', 'M17', '2023-05-15', 55.00, 'Cash'),
+('P18', 'M18', '2023-06-20', 70.00, 'Credit Card'),
+('P19', 'M19', '2023-07-25', 90.00, 'Debit Card'),
+('P20', 'M20', '2023-08-30', 80.00, 'Online Payment'),
+('P21', 'M21', '2023-09-05', 75.00, 'Cash'),
+('P22', 'M22', '2023-10-10', 85.00, 'Credit Card'),
+('P23', 'M23', '2023-11-15', 95.00, 'Debit Card'),
+('P24', 'M24', '2023-12-20', 70.00, 'Online Payment'),
+('P25', 'M25', '2024-01-25', 60.00, 'Cash'),
+('P26', 'M26', '2024-02-28', 80.00, 'Credit Card'),
+('P27', 'M27', '2024-03-05', 70.00, 'Debit Card'),
+('P28', 'M28', '2024-04-10', 100.00, 'Online Payment'),
+('P29', 'M29', '2024-05-15', 55.00, 'Cash'),
+('P30', 'M30', '2024-06-20', 85.00, 'Credit Card'),
+('P31', 'M31', '2024-07-25', 90.00, 'Debit Card'),
+('P32', 'M32', '2024-08-30', 80.00, 'Online Payment'),
+('P33', 'M33', '2024-09-05', 75.00, 'Cash'),
+('P34', 'M34', '2024-10-10', 70.00, 'Credit Card'),
+('P35', 'M35', '2024-11-15', 95.00, 'Debit Card'),
+('P36', 'M36', '2024-12-20', 60.00, 'Online Payment'),
+('P37', 'M37', '2025-01-25', 70.00, 'Cash'),
+('P38', 'M38', '2025-02-28', 80.00, 'Credit Card'),
+('P39', 'M39', '2025-03-05', 90.00, 'Debit Card'),
+('P40', 'M40', '2025-04-10', 75.00, 'Online Payment'),
+('P41', 'M41', '2025-05-15', 85.00, 'Cash'),
+('P42', 'M42', '2025-06-20', 70.00, 'Credit Card'),
+('P43', 'M43', '2025-07-25', 60.00, 'Debit Card'),
+('P44', 'M44', '2025-08-30', 100.00, 'Online Payment'),
+('P45', 'M45', '2025-09-05', 70.00, 'Cash'),
+('P46', 'M46', '2025-10-10', 80.00, 'Credit Card'),
+('P47', 'M47', '2025-11-15', 90.00, 'Debit Card'),
+('P48', 'M48', '2025-12-20', 75.00, 'Online Payment'),
+('P49', 'M49', '2026-01-25', 70.00, 'Cash'),
+('P50', 'M50', '2026-02-28', 85.00, 'Credit Card');
+
+
+CREATE TABLE MemberLogin (
+    UserID VARCHAR(10) PRIMARY KEY,
+    Passcode VARCHAR(20),
+    MemberID VARCHAR(10)
+    FOREIGN KEY (UserID) REFERENCES Members(MemberID)
+
+);
+
+INSERT INTO MemberLogin (UserID, Passcode, MemberID)
+VALUES
+('user001', 'pass123', 'M1'),
+('user002', 'pass456', 'M2'),
+('user003', 'pass789', 'M3'),
+('user004', 'passabc', 'M4'),
+('user005', 'passdef', 'M5'),
+('user006', 'passghi', 'M6'),
+('user007', 'passjkl', 'M7'),
+('user008', 'passmno', 'M8'),
+('user009', 'passpqr', 'M9'),
+('user010', 'passtu', 'M10'),
+('user011', 'passvwx', 'M11'),
+('user012', 'passyz', 'M12'),
+('user013', 'pass1234', 'M13'),
+('user014', 'pass5678', 'M14'),
+('user015', 'passabcd', 'M15'),
+('user016', 'passefgh', 'M16'),
+('user017', 'passijkl', 'M17'),
+('user018', 'passmnop', 'M18'),
+('user019', 'passqrst', 'M19'),
+('user020', 'passuvwx', 'M20'),
+('user021', 'passyz12', 'M21'),
+('user022', 'pass3456', 'M22'),
+('user023', 'pass789a', 'M23'),
+('user024', 'passbcde', 'M24'),
+('user025', 'passfghi', 'M25'),
+('user026', 'passjklm', 'M26'),
+('user027', 'passnopq', 'M27'),
+('user028', 'passrstu', 'M28'),
+('user029', 'passvwxy', 'M29'),
+('user030', 'passz123', 'M30'),
+('user031', 'pass4567', 'M31'),
+('user032', 'pass89ab', 'M32'),
+('user033', 'passcdef', 'M33'),
+('user034', 'passghij', 'M34'),
+('user035', 'passklmn', 'M35'),
+('user036', 'passopqr', 'M36'),
+('user037', 'passtuvw', 'M37'),
+('user038', 'passxyz1', 'M38'),
+('user039', 'pass2345', 'M39'),
+('user040', 'pass6789', 'M40'),
+('user041', 'passabc1', 'M41'),
+('user042', 'passdef2', 'M42'),
+('user043', 'passghi3', 'M43'),
+('user044', 'passjkl4', 'M44'),
+('user045', 'passmno5', 'M45'),
+('user046', 'passpqr6', 'M46'),
+('user047', 'passtu7', 'M47'),
+('user048', 'passvwx8', 'M48'),
+('user049', 'passyz9', 'M49'),
+('user050', 'pass1230', 'M50');
+
+CREATE TABLE TrainerLogin (
+    UserID VARCHAR(10) PRIMARY KEY,
+    Passcode VARCHAR(20),
+    TrainerID VARCHAR(10),
+    FOREIGN KEY (UserID) REFERENCES Trainers(TrainerID)
+
+);
+
+INSERT INTO TrainerLogin (UserID, Passcode, TrainerID)
+VALUES
+('user051', 'pass5671', 'T1'),
+('user052', 'passabcd2', 'T2'),
+('user053', 'passefgh3', 'T3'),
+('user054', 'passijkl4', 'T4'),
+('user055', 'passmnop5', 'T5'),
+('user056', 'passqrst6', 'T6'),
+('user057', 'passuvwx7', 'T7'),
+('user058', 'passyz12', 'T8'),
+('user059', 'pass3456', 'T9'),
+('user060', 'pass789a', 'T10'),
+('user061', 'passbcde', 'T11'),
+('user062', 'passfghi', 'T12'),
+('user063', 'passjklm', 'T13'),
+('user064', 'passnopq', 'T14'),
+('user065', 'passrstu', 'T15');
+
+
