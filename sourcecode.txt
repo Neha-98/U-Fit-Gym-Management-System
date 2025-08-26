@@ -389,7 +389,7 @@ VALUES
 ('user044', 'passjkl4', 'M44'),
 ('user045', 'passmno5', 'M45'),
 ('user046', 'passpqr6', 'M46'),
-('user047', 'passtu7', 'M47'),
+('user047', 'passstu7', 'M47'),
 ('user048', 'passvwx8', 'M48'),
 ('user049', 'passyz9', 'M49'),
 ('user050', 'pass1230', 'M50');
